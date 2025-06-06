@@ -179,6 +179,36 @@
   .scroll-fade {
     mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   }
+
+  /* Notch Header Styles */
+  .notch-header {
+    @apply fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-700 ease-out;
+    width: 200px;
+    height: 48px;
+    border-radius: 24px;
+  }
+
+  .notch-header.expanded {
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 28px;
+  }
+
+  .blur-card {
+    @apply backdrop-blur-2xl bg-surface-container/70 border border-outline-variant/30;
+    backdrop-filter: blur(24px) saturate(180%);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-xl bg-surface-container/60 border border-outline-variant/40;
+    backdrop-filter: blur(16px) saturate(150%);
+  }
+
+  .frosted-glass {
+    @apply backdrop-blur-3xl bg-surface-container/50 border border-outline-variant/50;
+    backdrop-filter: blur(32px) saturate(200%);
+  }
 }
 
 @keyframes float {
