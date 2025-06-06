@@ -12,11 +12,26 @@ import ThreeBackground from '@/components/ThreeBackground';
 import { useThemeManager } from '@/hooks/useThemeManager';
 import portfolioData from '@/data/portfolio.json';
 
+// WebGL detection utility
+const isWebGLAvailable = () => {
+  try {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    return !!context;
+  } catch {
+    return false;
+  }
+};
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [webglSupported, setWebglSupported] = useState(true);
   const { currentTheme, switchTheme } = useThemeManager();
 
   useEffect(() => {
+    // Check WebGL support
+    setWebglSupported(isWebGLAvailable());
+
     // Add intersection observer for scroll animations
     const observers = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -26,7 +41,6 @@ const Index = () => {
       });
     }, { threshold: 0.1 });
 
-    // Observe all sections
     document.querySelectorAll('section').forEach((section) => {
       observers.observe(section);
     });
@@ -40,18 +54,47 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground theme-transition">
-      {/* 3D Background */}
+      {/* 3D Background or Fallback */}
       <div className="fixed inset-0 -z-10">
-        <Canvas
-          camera={{
-            position: [0, 0, 1],
-            fov: 100,
-          }}
-          gl={{ antialias: false, alpha: true }}
-          dpr={[1, 1.5]}
-        >
-          <ThreeBackground />
-        </Canvas>
+        {webglSupported ? (
+          <Canvas
+            camera={{
+              position: [0, 0, 1],
+              fov: 100,
+            }}
+            gl={{ 
+              antialias: true, 
+              alpha: true,
+              powerPreference: "high-performance",
+              failIfMajorPerformanceCaveat: false
+            }}
+            dpr={[1, 2]}
+            onCreated={({ gl }) => {
+              gl.setClearColor('#000000', 0);
+            }}
+          >
+            <ThreeBackground />
+          </Canvas>
+        ) : (
+          // CSS Fallback Background
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-surface-variant">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,77,255,0.1),transparent_50%)]" />
+            <div className="absolute inset-0 opacity-20">
+              {Array.from({ length: 50 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-primary rounded-full animate-pulse"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 3}s`,
+                    animationDuration: `${2 + Math.random() * 2}s`,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
       
       <Header 
