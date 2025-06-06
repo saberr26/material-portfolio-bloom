@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Header from '@/components/Header';
@@ -26,13 +25,11 @@ const isWebGLAvailable = () => {
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [webglSupported, setWebglSupported] = useState(true);
-  const { currentTheme, switchTheme } = useThemeManager();
+  const { switchTheme } = useThemeManager();
 
   useEffect(() => {
-    // Check WebGL support
     setWebglSupported(isWebGLAvailable());
 
-    // Add intersection observer for scroll animations
     const observers = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -41,8 +38,8 @@ const Index = () => {
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('section').forEach((section) => {
-      observers.observe(section);
+    document.querySelectorAll('section, footer').forEach((el) => {
+      observers.observe(el);
     });
 
     return () => observers.disconnect();
@@ -54,7 +51,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground theme-transition">
-      {/* 3D Background or Fallback */}
       <div className="fixed inset-0 -z-10">
         {webglSupported ? (
           <Canvas
@@ -76,23 +72,8 @@ const Index = () => {
             <ThreeBackground />
           </Canvas>
         ) : (
-          // CSS Fallback Background
           <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-surface-variant">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,77,255,0.1),transparent_50%)]" />
-            <div className="absolute inset-0 opacity-20">
-              {Array.from({ length: 50 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-primary rounded-full animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 3}s`,
-                    animationDuration: `${2 + Math.random() * 2}s`,
-                  }}
-                />
-              ))}
-            </div>
           </div>
         )}
       </div>
@@ -104,32 +85,36 @@ const Index = () => {
         personalInfo={portfolioData.personal_info}
       />
       
-      <Hero personalInfo={portfolioData.personal_info} />
+      <main className="pt-24">
+        <Hero personalInfo={portfolioData.personal_info} />
+        
+        <div className="space-y-8 px-4">
+            <section className="glass-card scale-on-hover">
+                <About 
+                  skills={portfolioData.skills}
+                  valuePropositions={portfolioData.value_propositions}
+                />
+            </section>
+            
+            <section className="glass-card scale-on-hover">
+                <Services services={portfolioData.services} />
+            </section>
+            
+            <section className="glass-card scale-on-hover">
+                <Projects projects={portfolioData.projects} />
+            </section>
+            
+            <section className="glass-card scale-on-hover">
+                <Reviews reviews={portfolioData.reviews} />
+            </section>
+            
+            <section className="glass-card scale-on-hover">
+                <Contact contact={portfolioData.personal_info.contact} />
+            </section>
+        </div>
+      </main>
       
-      <section className="frosted-glass mx-4 mb-8 rounded-3xl">
-        <About 
-          skills={portfolioData.skills}
-          valuePropositions={portfolioData.value_propositions}
-        />
-      </section>
-      
-      <section className="glass-effect mx-4 mb-8 rounded-3xl">
-        <Services services={portfolioData.services} />
-      </section>
-      
-      <section className="blur-card mx-4 mb-8 rounded-3xl">
-        <Projects projects={portfolioData.projects} />
-      </section>
-      
-      <section className="frosted-glass mx-4 mb-8 rounded-3xl">
-        <Reviews reviews={portfolioData.reviews} />
-      </section>
-      
-      <section className="glass-effect mx-4 mb-8 rounded-3xl">
-        <Contact contact={portfolioData.personal_info.contact} />
-      </section>
-      
-      <footer className="py-8 text-center text-on-surface-variant border-t border-outline-variant/30 mx-4 material-card mt-8">
+      <footer className="py-8 text-center text-on-surface-variant mt-8">
         <div className="p-6">
           <p>&copy; 2025 {portfolioData.personal_info.name}. All rights reserved.</p>
           <p className="mt-2 text-sm">
