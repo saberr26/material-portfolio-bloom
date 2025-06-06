@@ -66,7 +66,7 @@ function Particles({ count, theme }: ParticlesProps) {
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
+    <mesh rotation={[0, 0, Math.PI / 4]}>
       <Points ref={mesh} positions={positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
@@ -76,7 +76,7 @@ function Particles({ count, theme }: ParticlesProps) {
           depthWrite={false}
         />
       </Points>
-    </group>
+    </mesh>
   );
 }
 
@@ -95,7 +95,10 @@ const ThreeBackground: React.FC<ThreeBackgroundProps> = ({ theme }) => {
         gl={{ antialias: false, alpha: true }}
         dpr={[1, 1.5]}
       >
-        <color attach="background" args={['#0a0a0f']} />
+        <mesh>
+          <boxGeometry args={[100, 100, 100]} />
+          <meshBasicMaterial color="#0a0a0f" />
+        </mesh>
         <Particles count={1000} theme={theme} />
       </Canvas>
     </div>
