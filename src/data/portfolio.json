@@ -1,0 +1,119 @@
+
+{
+  "personal_info": {
+    "name": "Your Name Here",
+    "title": "Python Developer & Linux Automation Specialist",
+    "tagline": "Python Automation | Linux Expert | Web Scraping",
+    "contact": {
+      "email": "your.email@gmail.com",
+      "discord": "YourHandle#1234",
+      "github": "github.com/yourusername",
+      "location": "Constantine, Algeria"
+    }
+  },
+  "skills": {
+    "programming": {
+      "category": "Programming",
+      "items": [
+        "Python (Automation, Scripts)",
+        "Bash Scripting",
+        "Basic Web Development",
+        "AI-Assisted Coding"
+      ]
+    },
+    "systems": {
+      "category": "Linux & Systems",
+      "items": [
+        "Arch Linux Daily User",
+        "Command Line Expert",
+        "System Administration",
+        "File Management & Processing"
+      ]
+    },
+    "automation": {
+      "category": "Automation & Tools",
+      "items": [
+        "Web Scraping",
+        "Data Processing",
+        "Task Automation",
+        "Report Generation"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "name": "Reddit Data Scraper",
+      "description": "Automated web scraping tool that collects post data from multiple subreddits, processes the information, and exports to CSV/JSON formats. Includes data analysis and top post identification.",
+      "technologies": ["Python", "BeautifulSoup", "Data Processing", "Web Scraping"],
+      "status": "completed"
+    },
+    {
+      "name": "File Organization System",
+      "description": "Bulk file processing script that automatically organizes thousands of files by type, date, and custom criteria. Includes duplicate detection and batch renaming capabilities.",
+      "technologies": ["Python", "File Processing", "Automation"],
+      "status": "concept"
+    },
+    {
+      "name": "System Monitoring Tool",
+      "description": "Linux system monitoring script that tracks resource usage, generates alerts, and creates detailed reports. Perfect for server maintenance and performance optimization.",
+      "technologies": ["Python", "Linux", "System Administration"],
+      "status": "concept"
+    }
+  ],
+  "services": [
+    {
+      "name": "Python Automation",
+      "description": "Custom scripts for data processing, file management, and task automation. Quick turnaround, clean code.",
+      "price_range": "$30-150 per script",
+      "delivery_time": "1-3 days"
+    },
+    {
+      "name": "Web Scraping",
+      "description": "Extract data from websites automatically. Price monitoring, data collection, market research.",
+      "price_range": "$50-300 per project",
+      "delivery_time": "2-5 days"
+    },
+    {
+      "name": "Linux Support",
+      "description": "Server setup, maintenance, troubleshooting. Arch Linux specialist with years of experience.",
+      "price_range": "$40-100 per hour",
+      "delivery_time": "immediate"
+    },
+    {
+      "name": "Data Processing",
+      "description": "Clean, organize, and analyze your data. CSV processing, report generation, data conversion.",
+      "price_range": "$25-200 per project",
+      "delivery_time": "1-4 days"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Sarah Chen",
+      "role": "E-commerce Manager",
+      "rating": 5,
+      "text": "Excellent web scraping solution for our price monitoring. Fast delivery and clean code. Highly recommended!",
+      "project": "Price Monitoring Tool"
+    },
+    {
+      "name": "Marcus Rodriguez",
+      "role": "Startup Founder",
+      "rating": 5,
+      "text": "Amazing Linux server setup and automation scripts. Saved us weeks of work. Very professional and responsive.",
+      "project": "Server Automation"
+    },
+    {
+      "name": "Emily Johnson",
+      "role": "Data Analyst",
+      "rating": 5,
+      "text": "Perfect data processing solution. Clean, efficient code that handles large datasets beautifully. Will work with again.",
+      "project": "Data Processing Pipeline"
+    }
+  ],
+  "value_propositions": [
+    "Fast turnaround (1-3 days for most projects)",
+    "Clear communication throughout the project",
+    "Fair pricing - no hidden costs",
+    "Reliable delivery - I meet deadlines",
+    "AI-assisted development for efficient solutions"
+  ]
+}
