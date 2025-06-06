@@ -33,7 +33,10 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+				'primary-accent': 'hsl(var(--primary-accent))',
 				'secondary-accent': 'hsl(var(--secondary-accent))',
+				tertiary: 'hsl(var(--tertiary))',
+				'tertiary-container': 'hsl(var(--tertiary-container))',
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -54,6 +57,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				surface: 'hsl(var(--surface))',
+				'surface-variant': 'hsl(var(--surface-variant))',
+				'surface-container': 'hsl(var(--surface-container))',
+				'surface-container-high': 'hsl(var(--surface-container-high))',
+				'on-surface': 'hsl(var(--on-surface))',
+				'on-surface-variant': 'hsl(var(--on-surface-variant))',
+				outline: 'hsl(var(--outline))',
+				'outline-variant': 'hsl(var(--outline-variant))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

@@ -3,75 +3,118 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Premium Dark Portfolio Design System */
+/* Material You Design System - Inspired by Google Gemini */
 
 @layer base {
   :root {
-    --background: 222 22% 8%;
-    --foreground: 210 40% 98%;
+    --background: 10 10% 4%;
+    --foreground: 210 11% 96%;
 
-    --card: 222 22% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 10 10% 8%;
+    --card-foreground: 210 11% 96%;
 
-    --popover: 222 22% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 10 10% 8%;
+    --popover-foreground: 210 11% 96%;
 
     --primary: 263 70% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222 22% 14%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 10 10% 12%;
+    --secondary-foreground: 210 11% 96%;
 
-    --muted: 222 22% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 10 10% 14%;
+    --muted-foreground: 215 13% 65%;
 
     --accent: 263 70% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 222 22% 16%;
-    --input: 222 22% 16%;
+    --border: 10 10% 18%;
+    --input: 10 10% 18%;
     --ring: 263 70% 50%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
-    /* Portfolio specific colors */
-    --surface: 222 22% 11%;
-    --surface-variant: 222 22% 13%;
+    /* Material You specific tokens */
+    --surface: 10 10% 6%;
+    --surface-variant: 10 10% 10%;
+    --surface-container: 10 10% 12%;
+    --surface-container-high: 10 10% 16%;
+    --on-surface: 210 11% 96%;
+    --on-surface-variant: 215 13% 75%;
+    --outline: 215 13% 40%;
+    --outline-variant: 215 13% 25%;
     --primary-accent: 263 70% 45%;
     --secondary-accent: 199 89% 48%;
-    --success: 142 71% 45%;
-    --warning: 38 92% 50%;
+    --tertiary: 142 71% 45%;
+    --tertiary-container: 142 71% 20%;
   }
 
+  /* Material Theme Variants */
   .material-theme-1 {
     --primary: 263 70% 50%;
-    --accent: 263 70% 50%;
     --primary-accent: 263 70% 45%;
-    --secondary-accent: 199 89% 48%;
+    --secondary-accent: 240 100% 70%;
+    --tertiary: 280 60% 60%;
+    --accent: 263 70% 50%;
   }
 
   .material-theme-2 {
-    --primary: 199 89% 48%;
-    --accent: 199 89% 48%;
-    --primary-accent: 199 89% 43%;
-    --secondary-accent: 263 70% 50%;
+    --primary: 187 100% 42%;
+    --primary-accent: 187 100% 37%;
+    --secondary-accent: 210 100% 56%;
+    --tertiary: 270 60% 70%;
+    --accent: 187 100% 42%;
   }
 
   .material-theme-3 {
-    --primary: 142 71% 45%;
-    --accent: 142 71% 45%;
-    --primary-accent: 142 71% 40%;
-    --secondary-accent: 38 92% 50%;
+    --primary: 122 71% 45%;
+    --primary-accent: 122 71% 40%;
+    --secondary-accent: 67 100% 50%;
+    --tertiary: 82 100% 60%;
+    --accent: 122 71% 45%;
   }
 
   .material-theme-4 {
-    --primary: 342 75% 55%;
-    --accent: 342 75% 55%;
-    --primary-accent: 342 75% 50%;
-    --secondary-accent: 142 71% 45%;
+    --primary: 340 82% 52%;
+    --primary-accent: 340 82% 47%;
+    --secondary-accent: 14 100% 57%;
+    --tertiary: 122 71% 45%;
+    --accent: 340 82% 52%;
+  }
+
+  .material-theme-5 {
+    --primary: 36 100% 50%;
+    --primary-accent: 36 100% 45%;
+    --secondary-accent: 4 90% 58%;
+    --tertiary: 14 100% 57%;
+    --accent: 36 100% 50%;
+  }
+
+  .material-theme-6 {
+    --primary: 207 90% 54%;
+    --primary-accent: 207 90% 49%;
+    --secondary-accent: 262 83% 58%;
+    --tertiary: 240 100% 70%;
+    --accent: 207 90% 54%;
+  }
+
+  .material-theme-7 {
+    --primary: 174 100% 29%;
+    --primary-accent: 174 100% 24%;
+    --secondary-accent: 188 100% 38%;
+    --tertiary: 36 100% 50%;
+    --accent: 174 100% 29%;
+  }
+
+  .material-theme-8 {
+    --primary: 340 82% 52%;
+    --primary-accent: 340 82% 47%;
+    --secondary-accent: 207 90% 54%;
+    --tertiary: 280 60% 60%;
+    --accent: 340 82% 52%;
   }
 }
 
@@ -82,7 +125,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Google Sans', 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   html {
@@ -91,83 +134,90 @@
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl;
+  .material-card {
+    @apply bg-surface-container/80 backdrop-blur-xl border border-outline-variant/30 rounded-3xl;
+    box-shadow: 
+      0 1px 3px 0 hsl(var(--background) / 0.3),
+      0 4px 8px 3px hsl(var(--background) / 0.15),
+      0 1px 3px 0 hsl(var(--primary) / 0.05);
+  }
+
+  .material-card-elevated {
+    @apply bg-surface-container-high/90 backdrop-blur-xl border border-outline-variant/20 rounded-3xl;
+    box-shadow: 
+      0 2px 6px 2px hsl(var(--background) / 0.15),
+      0 8px 24px 4px hsl(var(--background) / 0.15),
+      0 1px 3px 0 hsl(var(--primary) / 0.1);
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-primary-accent to-secondary-accent bg-clip-text text-transparent;
   }
 
   .floating-animation {
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
   }
 
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+  .material-button {
+    @apply bg-primary text-primary-foreground rounded-full px-6 py-3 font-medium transition-all duration-300;
+    box-shadow: 0 1px 3px 0 hsl(var(--primary) / 0.3);
   }
 
-  .slide-up {
-    animation: slide-up 0.6s ease-out forwards;
-    opacity: 0;
-    transform: translateY(2rem);
+  .material-button:hover {
+    @apply scale-105;
+    box-shadow: 0 4px 8px 3px hsl(var(--primary) / 0.15);
   }
 
-  .fade-in {
-    animation: fade-in 0.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  .scale-on-hover {
-    transition: transform 0.3s ease;
-  }
-
-  .scale-on-hover:hover {
-    transform: scale(1.02);
+  .material-surface {
+    @apply bg-surface border border-outline-variant/20 rounded-3xl;
   }
 
   .theme-transition {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-fade {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-15px) scale(1.02); }
 }
 
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
-  100% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+/* Material Motion */
+.material-enter {
+  animation: materialEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-@keyframes slide-up {
+@keyframes materialEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes fade-in {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Custom scrollbar */
+/* Enhanced scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: hsl(var(--surface));
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.5);
-  border-radius: 4px;
+  background: linear-gradient(45deg, hsl(var(--primary) / 0.6), hsl(var(--secondary-accent) / 0.6));
+  border-radius: 10px;
+  border: 2px solid hsl(var(--surface));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.7);
+  background: linear-gradient(45deg, hsl(var(--primary) / 0.8), hsl(var(--secondary-accent) / 0.8));
 }
